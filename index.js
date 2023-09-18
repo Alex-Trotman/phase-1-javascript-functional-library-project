@@ -39,8 +39,51 @@ function myReduce(collection, callback, acc) {
     return acc
 }
 
-function myFind(collection, predicate){
-    
+function myFind(collection, predicate) {
+  let values = Object.values(collection);
+
+  return values.find(value => predicate(value));
 }
 
-  
+function myFilter(collection, predicate) {
+  let values = Object.values(collection);
+  let isTruthy = values.filter(value => predicate(value));
+  if (isTruthy){
+    return isTruthy
+  } else return [];
+}
+
+function mySize(collection){
+  let values = Object.values(collection);
+  return values.length
+}
+
+function myFirst(array, n) {
+  if (typeof n === 'number' && n > 0) {
+    return array.slice(0, n);
+  } else {
+    return array[0];
+  }
+}
+
+function myLast(array, n) {
+  if (typeof n === 'number' && n > 0) {
+    return array.slice(array.length - n);
+  } else {
+    return array[array.length - 1];
+  }
+}
+
+function myKeys(object){
+  // Use Object.keys() to retrieve the property names
+  const keys = Object.keys(object);
+
+  // Return the array of property names
+  return keys;
+};
+
+function myValues(object){
+  const values = Object.values(object);
+
+  return values;
+}
